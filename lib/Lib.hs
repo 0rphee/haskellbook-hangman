@@ -1,4 +1,4 @@
-module Main where
+module Lib where
 
 import Control.Monad (forever)
 import Data.Char (toLower) 
@@ -119,10 +119,3 @@ runGame puzzle = forever $ do
         [c] -> handleGuess puzzle c >>= runGame
         _   -> putStrLn "Your guess must\
                         \ be a single character"
-
-main :: IO ()
-main = do
-    word <- randomWord'
-    let puzzle = freshPuzzle (fmap toLower word)
-    runGame puzzle
-  
